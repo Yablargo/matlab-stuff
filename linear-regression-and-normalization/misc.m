@@ -1,6 +1,15 @@
-function [] = graphIt(data, xIndex,xLabel,yIndex,yLabel) 
+function [] = graphIt(data, xIndex,xLabel,yIndex,yLabel,sp) 
+    
+    %default position if none exists
+    if exist('sp','var')    
         
-    figure ('Position',[0,0,300,300])
+        subplot(sp(1),sp(2),sp(3))
+ 
+    else
+        figure        
+ 
+    end
+    %figure ('Position',[0,0,300,300])
     xlabel(xLabel)
     ylabel(yLabel)
     %get the mean of x and set xlim to x-mean and x+mean
@@ -8,8 +17,6 @@ function [] = graphIt(data, xIndex,xLabel,yIndex,yLabel)
     xmin = mean(xdata)-std(xdata);
     xmax = mean(xdata)+std(xdata);
     
-    xmin
-    xmax
     
     xlim([xmin xmax]);    
     
@@ -21,6 +28,15 @@ function [] = graphIt(data, xIndex,xLabel,yIndex,yLabel)
     
    ylim([ymin ymax ]);
     scatter(data(:,xIndex),data(:,yIndex))
-    legend(xLabel + ' vs ' + yLabel)
+     %default position if none exists
+    if exist('sp','var')    
+        
+        
+        title(xLabel + ' vs ' + yLabel)
+    else
+        
+        legend(xLabel + ' vs ' + yLabel)
+    end
+    
 end
 
