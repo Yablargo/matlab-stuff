@@ -18,7 +18,7 @@ end
 XNorm = ((XNorm-mu)./sigma)
 
 if hasOnesForTheta0
-    XNorm = [ones(length(XNorm), 1) XNorm]
+    XNorm = [ones(lx, 1) XNorm]
 end
 
 end
